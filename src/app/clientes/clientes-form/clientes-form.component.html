@@ -7,18 +7,33 @@
     {{cliente.cpf}}
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="success==true">
+                    Cliente/atualizado com sucesso
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                    {{ erro }}
+                </div>
+                
+            </div>
+        </div>
+        <div class="row" *ngIf="cliente.id">
+            
             <div class="col-md-6">
                 <div class="form-group">
                     <label>ID:</label>
-                    <input type="text" class="form-control"disabled="true" name="id" [ngModel]="cliente.id">
+                    <input type="text" class="form-control" disabled="true" name="id" [ngModel]="cliente.id">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Data de cadastro:</label>
-                    <input type="text" class="form-control"disabled="true" name="dataCadastro" [ngModel]="cliente.dataCadastro">
+                    <input type="text" class="form-control" disabled="true" name="dataCadastro" [ngModel]="cliente.dataCadastro">
                 </div>
             </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Nome:*</label>
