@@ -1,0 +1,13 @@
+.bt-mg{
+    button{
+        margin-left: 1rem;
+        &:first-of-type{
+            margin-left: 0rem;
+        }
+    }
+}
+.edit{
+    background-color: rgb(255, 255, 255,0.5);
+    border: solid 0px;
+    height: 2.4rem;
+}

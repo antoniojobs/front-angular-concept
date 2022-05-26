@@ -1,10 +1,10 @@
 <h1 class="mt-4">Clientes</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Cadastro</li>
+    <li class="breadcrumb-item active">{{ cliente.id ? 'Edição':'Cadastro' }}</li>
 </ol>
 <div class="container">
-    {{cliente.nome}}
-    {{cliente.cpf}}
+    <!-- {{cliente.nome}}
+    {{cliente.cpf}} -->
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-12">
@@ -14,7 +14,6 @@
                 <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
                     {{ erro }}
                 </div>
-                
             </div>
         </div>
         <div class="row" *ngIf="cliente.id">
@@ -48,10 +47,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-success">
-                    salvar
-                </button>
+            <div class="col-md-4">
+                <div class="bt-mg">
+                    <button type="submit" class="btn btn-success">
+                        <i class="{{ cliente.id ? 'bi bi-arrow-clockwise':'bi bi-plus-square-fill' }}" style="margin-right: 1rem;"></i>
+                        {{ cliente.id ? 'Atualizar':'Salvar' }}
+                    </button>
+                </div>
             </div>
         </div>
     </form>

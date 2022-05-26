@@ -1,1 +1,85 @@
-<p>clientes-lista works!</p>
+<h1 class="mt-4">Clientes</h1>
+<ol class="breadcrumb mb-4">
+    <!-- <li class="breadcrumb-item active" *ngFor="cliente of clientes"> {{cliente}} </li> -->
+</ol>
+
+<div class="container clientes-lista-component">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert" *ngIf="mensagemSucesso">
+                {{ mensagemSucesso }}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngFor="mensagemErro">
+                {{ mensagemErro }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="bt-mg">
+                <button type="button" class="btn btn-outline-warning"(click)="novoCadastro()" >
+                    <i class="bi bi-plus-square-fill" style="margin-right: 1rem;"></i>Novo
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-12">
+            
+            <table class="table table-hover table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <!-- <th scope="col">#</th> -->
+                        <th scope="col">CPF</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Data de cadastro</th>
+                        <th scope="col">Operações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of clientes">
+                        <!-- <th scope="row"> {{ cliente.id }} </th> -->
+                        <td>{{ cliente.cpf }}</td>
+                        <td>{{ cliente.nome }}</td>
+                        <td>{{ cliente.dataCadastro }}</td>
+                        <td>
+                            <button class="btn btn-primary" routerLink="/clientes-form/{{ cliente.id }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <button class="btn btn-danger ml-1" data-toggle="modal" data-target="#modalDell" (click)="preparaDelecao(cliente)">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="modalDell" tabindex="-1" role="dialog" aria-labelledby="modalDellLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDellLabel">Atenção</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> -->
+            </div>
+            <div class="modal-body" *ngIf="clienteSelecionado">
+                Deseja realmente deletar o registro de {{clienteSelecionado.nome}}
+            </div>
+            <div class="modal-footer d-flex">
+                <button type="button" class="btn btn-primary" (click)="deletarCliente()" data-dismiss="modal">Deletar</button>
+                <button type="button" class="btn btn-secondary " data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
