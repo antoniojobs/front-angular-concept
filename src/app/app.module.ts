@@ -10,6 +10,7 @@ import { ClientesModule } from './clientes/clientes.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClientesService } from './clientes.service';
 import { HttpClientModule } from "@angular/common/http";
+import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     TemplateModule,
     ClientesModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ServicoPrestadoModule
   ],
   providers: [ClientesService],
   bootstrap: [AppComponent]
