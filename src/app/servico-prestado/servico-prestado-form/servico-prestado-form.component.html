@@ -8,13 +8,47 @@
             <div class="col-md-6 col-lg-6">
                 <div class="form-group">
                     <label mr-4>Cliente:</label>
-                    <select class="form-control">
+                    <select class="form-control" 
+                    [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="servico.idCliente">
                         <option value="">Selecione...</option>
                         <option *ngFor="let cliente of clientes"[ngValue]="cliente.id">
                             {{ cliente.nome }}
                         </option>
                     </select>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea class="form-control" [(ngModel)]="servico.descricao" type="text" name="descricao" id="inputDescricao"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Data:</label>
+                    <input class="form-control" [(ngModel)]="servico.data" type="date" name="data" id="inputData">
+                    <!-- <input class="form-control" [(ngModel)]="servico.data" type="text" name="data" id="inputData"> -->
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Valor:</label>
+                    <input class="form-control" [(ngModel)]="servico.valor" type="text" name="valor" id="inputValor">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">
+                    Salvar
+                    <i class="fa fa-save" style="margin-left: 0.6rem;"></i>
+                </button>
             </div>
         </div>
     </form>
